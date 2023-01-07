@@ -1,8 +1,8 @@
 #ifndef screen_handler_h
 #define screen_handler_h
 
-#include <spi.h>
-#include <wire.h>
+#include <SPI.h>
+#include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
