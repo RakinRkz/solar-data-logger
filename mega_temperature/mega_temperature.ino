@@ -23,7 +23,6 @@ void setup() {
   rtc_init();
   delay(1000);
   screen_display("RTC OK", get_time());
-
   delay(1000);
   sd_init();
   screen_display("SD card OK", "starting...");
@@ -41,7 +40,6 @@ void loop() {
   delay(10);
   // screen_display();
   Serial.println("waiting at interval...");
-  Serial.println("gg");
   int c_minute;
   c_minute = time_minute();
   if (c_minute % sd_write_interval == 0) {
