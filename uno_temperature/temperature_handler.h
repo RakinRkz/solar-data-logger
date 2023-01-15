@@ -1,19 +1,28 @@
-#define num_sensors 4
-#define temp_sensor_const 0.049
+#include <OneWire.h>
+#include <DallasTemperature.h>
+#define num_sensors 10
+#define ONE_WIRE_BUS 2
+int deviceCount = 0;
 
 float temperatures[num_sensors];
-int pin[num_sensors] = { A0, A1, A2, A3 };
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
 
 void temp_init() {
-  for (uint8_t i = 0; i < num_sensors; i++) {
-    pinMode(pin[i], INPUT);
-  }
+  sensors.begin();  // Start up the library
+  Serial.print("Locating devices...");
+  Serial.print("Found ");
+  deviceCount = sensors.getDeviceCount();
+  Serial.print(deviceCount, DEC);
+  Serial.println(" devices.");
+  Serial.println("");
 }
 void read_temperature() {
+  sensors.requestTemperatures();
+
   int adc_val;
   for (uint8_t i = 0; i < num_sensors; i++) {
-    adc_val = analogRead(pin[i]);
-    temperatures[i] = 1.0 * adc_val * temp_sensor_const;
+    temperatures[i] = sensors.getTempCByIndex(i);
   }
 }
 
@@ -31,9 +40,6 @@ String get_temp() {
   return tString;
 }
 
-String temp_data(uint8_t i){
+String temp_data(uint8_t i) {
   return String(temperatures[i]) + " C";
 }
-
-
-

@@ -1,3 +1,5 @@
+#include <OneWire.h>
+#include <DallasTemperature.h>
 #define num_sensors 10
 #define ONE_WIRE_BUS 2
 int deviceCount = 0;

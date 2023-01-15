@@ -1,7 +1,4 @@
 #include <Wire.h>
-#include <OneWire.h>
-#include <DallasTemperature.h>
-
 #include "rtc_handler.h"
 #include "temperature_handler.h"
 #include "sd_handler.h"
