@@ -30,10 +30,11 @@ void setup() {
   delay(1000);
   sd_init();
   screen_display("SD card OK", "starting...");
+  delay(2000);
 
   temp_init();
-#include <OneWire.h>
-#include <DallasTemperature.h>
+  screen_display("Init temp", "sensors...");
+
   delay(1000);
   Serial.println("init done");
 }
