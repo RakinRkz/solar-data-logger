@@ -1,4 +1,7 @@
 #include <Wire.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
 #include "rtc_handler.h"
 #include "temperature_handler.h"
 #include "sd_handler.h"
@@ -7,6 +10,7 @@
 #define DELAY_PER_DISP 1000  //micro seconds, integer
 #define sd_write_interval 2  //in minutes, integer only
 #define num_sensors 10
+
 
 #define DEBUG 0
 
@@ -28,7 +32,8 @@ void setup() {
   screen_display("SD card OK", "starting...");
 
   temp_init();
-
+#include <OneWire.h>
+#include <DallasTemperature.h>
   delay(1000);
   Serial.println("init done");
 }
