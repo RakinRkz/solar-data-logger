@@ -6,7 +6,7 @@
 
 #define DELAY_PER_DISP 1000  //micro seconds, integer
 #define sd_write_interval 2  //in minutes, integer only
-#define num_sensors 10
+#define num_sensors 12
 
 
 #define DEBUG 0
