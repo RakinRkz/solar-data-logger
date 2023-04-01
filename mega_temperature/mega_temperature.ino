@@ -5,7 +5,7 @@
 #include "screen_handler.h"
 
 #define DELAY_PER_DISP 1000  //micro seconds, integer
-#define sd_write_interval 1  //in minutes, integer only
+#define sd_write_interval 2  //in minutes, integer only
 #define num_sensors 12
 
 
@@ -65,7 +65,20 @@ void loop() {
       // delay(8000);
     }
   }
+  else{
+    get_temp(); 
+    for (int i = 0; i < num_sensors; i++) {
+        screen_display("Temp. " + String(i + 1), temp_data(i));
+        Serial.print("Temp sensor ");
+        Serial.print(i+1);
+        Serial.print(" : ");
+        Serial.println(temp_data(i));
+
+        delay(DELAY_PER_DISP);
+      }
+  }
 }
+
 void debug() {
   while (DEBUG) {
     String dataString = get_datetime() + "," + get_temp();

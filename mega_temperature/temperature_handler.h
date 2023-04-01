@@ -21,7 +21,7 @@ void read_temperature() {
   sensors.requestTemperatures();
 
   int adc_val;
-  for (uint8_t i = 0; i < num_sensors; i++) {
+  for (uint8_t i = 0; i < deviceCount; i++) {
     temperatures[i] = sensors.getTempCByIndex(i);
   }
 }
@@ -31,7 +31,7 @@ String get_temp() {
   delay(100);
 
   String tString = "";
-  for (int i = 0; i < num_sensors; i++) {
+  for (int i = 0; i < deviceCount; i++) {
     tString += String(temperatures[i]);
     if (i != num_sensors - 1)
       tString += ",";
